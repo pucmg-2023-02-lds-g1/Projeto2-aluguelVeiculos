@@ -7,14 +7,14 @@ Os artefatos do projeto estão separados da seguinte forma:
 * `/Caso de Uso`
 	* **README.md**: Descrição do diagrama de casos de uso.
 	* **Sistema de Matrículas.asta**: Projeto feito no Astah do diagrama de casos de uso.
-   ![Caso de uso inicial](projeto/Imagens/DiagramaDeCasoDeUso.png)
+   ![Caso de uso inicial](Imagens/DiagramaDeCasoDeUso.png)
 
 * `/Diagrama de Classes`
 	* **README.md**: Descrição do diagrama de classes.
-   ![UML - Diagrama de classes](projeto/Imagens/DiagramaDeClasse.png)
+   ![UML - Diagrama de classes](Imagens/DiagramaDeClasse.png)
 
 * `/Diagrama de pacote`
-   ![UML - Diagrama de pacotes](projeto/Imagens/DigramaDePacote.png)
+   ![UML - Diagrama de pacotes](/Imagens/DigramaDePacote.png)
 
 * `/Historia de usuário`
 	* **backlog.md**: Descrição das histórias de usuário de acordo com os casos de uso.
