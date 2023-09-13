@@ -14,7 +14,7 @@ Os artefatos do projeto estão separados da seguinte forma:
    ![UML - Diagrama de classes](Imagens/DiagramaDeClasse.png)
 
 * `/Diagrama de pacote`
-   ![UML - Diagrama de pacotes](/Imagens/DigramaDePacote.png)
+   ![UML - Diagrama de pacotes](Imagens/DigramaDePacote.png)
 
 * `/Historia de usuário`
 	* **backlog.md**: Descrição das histórias de usuário de acordo com os casos de uso.
