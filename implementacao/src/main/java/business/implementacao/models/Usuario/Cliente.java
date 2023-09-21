@@ -3,10 +3,20 @@ package business.implementacao.models.Usuario;
 import java.util.*;
 
 import business.implementacao.models.Pedido;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Entity
+@Table(name = "Cliente")
+@Entity(name = "Cliente")
+@Getter
+@Setter
+@EqualsAndHashCode(of = "id")
 public class Cliente extends Usuario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
+
     private String profissao;
     private String entidadeEmpregadora;
     private List<Double> rendimentoAuferido;
@@ -14,68 +24,29 @@ public class Cliente extends Usuario {
     private String RG;
     private List<Pedido> pedidos;
 
-    public Cliente(String nome, String endereco, String profissao, String entidadeEmpregadora, List<Double> rendimentoAuferido, String cPF, String rG, List<Pedido> pedidos) {
+    public Cliente(String nome, String endereco, String profissao, String entidadeEmpregadora,
+            List<Double> rendimentoAuferido, String cPF, String rG, List<Pedido> pedidos) {
         super(nome, endereco);
         setProfissao(profissao);
         setEntidadeEmpregadora(entidadeEmpregadora);
-        setRendimentoAuferido(rendimentoAuferido);;
+        setRendimentoAuferido(rendimentoAuferido);
+        ;
         setCPF(cPF);
         setRG(rG);
         setPedidos(pedidos);
     }
 
-    public String getProfissao() {
-        return profissao;
+    public Cliente(RequisicaoCliente rCliente) {
+
+        setProfissao(rCliente.profissao());
+        setEntidadeEmpregadora(rCliente.entidadeEmpregadora());
+        setRendimentoAuferido(rCliente.rendimentoAuferido());
+        setCPF(rCliente.CPF());
+        setRG(rCliente.RG());
+        setPedidos(rCliente.pedidos());
     }
 
-    public void setProfissao(String profissao) {
-        this.profissao = profissao;
-    }
+    public void criarPedido() {
 
-    public String getEntidadeEmpregadora() {
-        return entidadeEmpregadora;
-    }
-
-    public void setEntidadeEmpregadora(String entidadeEmpregadora) {
-        this.entidadeEmpregadora = entidadeEmpregadora;
-    }
-
-    public List<Double> getRendimentoAuferido() {
-        return rendimentoAuferido;
-    }
-
-    public void setRendimentoAuferido(List<Double> rendimentoAuferido) {
-        this.rendimentoAuferido = rendimentoAuferido;
-    }
-
-    public String getCPF() {
-        return CPF;
-    }
-
-    public void setCPF(String cPF) {
-        CPF = cPF;
-    }
-
-    public String getRG() {
-        return RG;
-    }
-
-    public void setRG(String rG) {
-        RG = rG;
-    }
-
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
-
-    // getters and setters
-
-
-    public void criarPedido(){
-       
     }
 }
