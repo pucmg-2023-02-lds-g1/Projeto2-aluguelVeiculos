@@ -1,40 +1,52 @@
 package business.implementacao.Controllers;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 import business.implementacao.models.Usuario.Cliente;
 import business.implementacao.models.Usuario.ClienteRepository;
-import business.implementacao.models.Usuario.RequisicaoCliente;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 
-@RestController
-@RequestMapping(path = "/Cliente")
+@Controller
+@RequestMapping("/clientes")
 public class ClienteController {
 
     @Autowired
-    private ClienteRepository repositorio;
-
-
-    @PostMapping
-    public ResponseEntity<Cliente> addCliente(@RequestBody RequisicaoCliente cliente) {
-        Cliente clienteNovo = new Cliente(cliente);
-        repositorio.save(clienteNovo);
-        return ResponseEntity.ok().build();
-    }
+    private ClienteRepository clienteRepository;
 
     @GetMapping
-    public Cliente getCliente(@PathVariable Long id) {
-        return repositorio.findById(id).orElse(null);
+    public String listarClientes(Model model) {
+        List<Cliente> clientes = clienteRepository.findAll();
+        model.addAttribute("clientes", clientes);
+        return "lista-clientes";
     }
 
-        @PostMapping
-    public void deleteCliente(@RequestBody Cliente cliente) {
-        repositorio.delete(cliente);
+    @GetMapping("/novo")
+    public String mostrarFormularioNovoCliente(Model model) {
+        model.addAttribute("cliente", new Cliente());
+        return "formulario-cliente";
     }
 
-        @PostMapping
-    public Cliente updaCliente(@RequestBody Cliente cliente) {
-        return repositorio.save(cliente);
+    @PostMapping("/salvar")
+    public String salvarCliente(@ModelAttribute("cliente") Cliente cliente) {
+        clienteRepository.save(cliente);
+        return "redirect:/clientes";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String mostrarFormularioEditarCliente(@PathVariable Long id, Model model) {
+        Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID de cliente inválido"));
+        model.addAttribute("cliente", cliente);
+        return "formulario-cliente";
+    }
+
+    @GetMapping("/excluir/{id}")
+    public String excluirCliente(@PathVariable Long id) {
+        clienteRepository.deleteById(id);
+        return "redirect:/clientes";
     }
 }

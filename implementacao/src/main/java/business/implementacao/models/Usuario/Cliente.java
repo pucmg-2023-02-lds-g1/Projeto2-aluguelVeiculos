@@ -1,52 +1,41 @@
 package business.implementacao.models.Usuario;
 
-import java.util.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-import business.implementacao.models.Pedido;
-import jakarta.persistence.*;
-import lombok.*;
-
-@Table(name = "Cliente")
-@Entity(name = "Cliente")
-@Getter
-@Setter
-@EqualsAndHashCode(of = "id")
-public class Cliente extends Usuario {
-
+@Entity
+public class Cliente {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private String nome;
+    private String email;
 
-    private String profissao;
-    private String entidadeEmpregadora;
-    private List<Double> rendimentoAuferido;
-    private String CPF;
-    private String RG;
-    private List<Pedido> pedidos;
+    // Getters e Setters
 
-    public Cliente(String nome, String endereco, String profissao, String entidadeEmpregadora,
-            List<Double> rendimentoAuferido, String cPF, String rG, List<Pedido> pedidos) {
-        super(nome, endereco);
-        setProfissao(profissao);
-        setEntidadeEmpregadora(entidadeEmpregadora);
-        setRendimentoAuferido(rendimentoAuferido);
-        ;
-        setCPF(cPF);
-        setRG(rG);
-        setPedidos(pedidos);
+    public long getId() {
+        return id;
     }
 
-    public Cliente(RequisicaoCliente rCliente) {
-
-        setProfissao(rCliente.profissao());
-        setEntidadeEmpregadora(rCliente.entidadeEmpregadora());
-        setRendimentoAuferido(rCliente.rendimentoAuferido());
-        setCPF(rCliente.CPF());
-        setRG(rCliente.RG());
-        setPedidos(rCliente.pedidos());
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void criarPedido() {
+    public String getNome() {
+        return nome;
+    }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
