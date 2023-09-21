@@ -1,14 +1,15 @@
 package business.implementacao.models.Usuario;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+@Table(name="Usuario")
+@Entity(name="Usuario")
+@Getter
+@Setter
 public class Usuario {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     private String nome;
     private String endereco;
 
@@ -17,20 +18,7 @@ public class Usuario {
         setEndereco(endereco);
     }
 
-    public String getNome() {
-        return nome;
+    public Usuario(){
+        
     }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
 }
