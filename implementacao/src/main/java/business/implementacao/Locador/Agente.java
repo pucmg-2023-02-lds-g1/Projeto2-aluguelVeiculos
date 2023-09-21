@@ -3,7 +3,7 @@ package business.implementacao.Locador;
 import java.util.List;
 
 import business.implementacao.models.Pedido;
-import business.implementacao.models.Usuario;
+import business.implementacao.models.Usuario.Usuario;
 
 public class Agente extends Usuario{
 
