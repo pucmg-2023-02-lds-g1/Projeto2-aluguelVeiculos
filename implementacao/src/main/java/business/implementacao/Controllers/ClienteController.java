@@ -2,8 +2,8 @@ package business.implementacao.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import business.implementacao.Repositorys.ClienteRepository;
-import business.implementacao.models.Cliente;
+import business.implementacao.models.Usuario.Cliente;
+import business.implementacao.models.Usuario.ClienteRepository;
 
 @RestController
 @RequestMapping(path = "/Clientes")

@@ -1,8 +1,6 @@
-package business.implementacao.Repositorys;
+package business.implementacao.models.Usuario;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import business.implementacao.models.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 

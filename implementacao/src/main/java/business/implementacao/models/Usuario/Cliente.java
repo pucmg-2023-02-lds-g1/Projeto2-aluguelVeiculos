@@ -1,7 +1,8 @@
-package business.implementacao.models;
+package business.implementacao.models.Usuario;
 
 import java.util.*;
 
+import business.implementacao.models.Pedido;
 import jakarta.persistence.Entity;
 
 @Entity

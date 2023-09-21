@@ -1,4 +1,4 @@
-package business.implementacao.models;
+package business.implementacao.models.Usuario;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
