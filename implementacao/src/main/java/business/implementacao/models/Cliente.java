@@ -72,4 +72,9 @@ public class Cliente extends Usuario {
     }
 
     // getters and setters
+
+
+    public void criarPedido(){
+       
+    }
 }
