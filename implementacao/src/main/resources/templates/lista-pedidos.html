@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pedidos</title>
+</head>
+<body>
+    <h1>Lista de Pedidos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Preço</th>
+                <th>Cliente</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pedido : ${pedidos}">
+                <td th:text="${pedido.id}"></td>
+                <td th:text="${pedido.preço}"></td>
+                <td th:text="${pedido.cliente.nome}"></td> <!-- Supondo que o Cliente tenha um atributo "nome" -->
+                <td>
+                    <a th:href="@{/pedidos/editar/{id}(id=${pedido.id})}">Editar</a>
+                    <a th:href="@{/pedidos/excluir/{id}(id=${pedido.id})}">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/pedidos/novo}">Novo Pedido</a>
+</body>
+</html>
