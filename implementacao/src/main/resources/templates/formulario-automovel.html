@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Automóvel</title>
+</head>
+<body>
+    <h1>Formulário de Automóvel</h1>
+    <form th:object="${automovel}" th:action="@{/automoveis/salvar}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" th:field="*{marca}" required><br>
+
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" th:field="*{modelo}" required><br>
+
+        <label for="placa">Placa:</label>
+        <input type="text" id="placa" th:field="*{placa}" required><br>
+
+        <label for="ano">Ano:</label>
+        <input type="number" id="ano" th:field="*{ano}" required><br>
+
+        <input type="submit" value="Salvar">
+    </form>
+    
+    <a th:href="@{/automoveis}">Voltar para a lista de automóveis</a>
+</body>
+</html>
