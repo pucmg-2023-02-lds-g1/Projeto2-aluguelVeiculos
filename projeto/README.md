@@ -13,6 +13,9 @@ Os artefatos do projeto estão separados da seguinte forma:
 	* **README.md**: Descrição do diagrama de classes.
    ![UML - Diagrama de classes](Imagens/DiagramaDeClasse.png)
 
+* `/Diagrama de implantação`
+   ![UML - Diagrama de implantacao](Imagens/implantacao.png)
+
 * `/Diagrama de pacote`
    ![UML - Diagrama de pacotes](Imagens/DigramaDePacote.png)
 
