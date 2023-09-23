@@ -49,4 +49,6 @@ public class AutomovelController {
         AutomovelRepository.deleteById(id);
         return "redirect:/automovels";
     }
+
+
 }
