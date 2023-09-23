@@ -16,6 +16,11 @@ public class Automovel {
     private String placa;
     private int ano;
 
+
+    public Automovel(){
+        
+    }
+    
     public Long getId() {
         return id;
     }
