@@ -12,14 +12,10 @@
         <input type="text" th:field="*{descricao}">
         
         <label>Cliente:</label>
-        <select th:field="*{cliente}">
-            <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nome}"></option>
-        </select>
+        <input type="text" th:field="*{cliente}">
         
         <label>Automóvel:</label>
-        <select th:field="*{automovel}">
-            <option th:each="automovel : ${automoveis}" th:value="${automovel.id}" th:text="${automovel.nome}"></option>
-        </select>
+        <input type="text" th:field="*{automovel}">
         
         <!-- Adicione outros campos aqui -->
         <button type="submit">Salvar</button>
