@@ -22,13 +22,12 @@
                 <td th:text="${automovel.placa}"></td>
                 <td th:text="${automovel.ano}"></td>
                 <td>
-                    Essas duas linhas estao dando erro!!!! Olhar id do automovel
-                    <a th:href="@{/automoveis/editar/{id}(id=${automoveis.id})}">Editar</a> |
-                    <a th:href="@{/automoveis/excluir/{id}(id=${automoveis.id})}">Excluir</a>
+                    <a th:href="@{/automoveis/editar/{id}(id=${automovel.id})}">Editar</a> |
+                    <a th:href="@{/automoveis/excluir/{id}(id=${automovel.id})}">Excluir</a>
                 </td>
             </tr>
         </tbody>
     </table>
-
+    <a th:href="@{/automovel/novo}">Novo Automovel</a>
 </body>
 </html>

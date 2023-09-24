@@ -47,7 +47,7 @@ public class AutomovelController {
     @GetMapping("/excluir/{id}")
     public String excluirAutomovel(@PathVariable Long id) {
         AutomovelRepository.deleteById(id);
-        return "redirect:/automovels";
+        return "redirect:/automoveis";
     }
 
 
