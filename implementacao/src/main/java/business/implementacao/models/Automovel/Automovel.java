@@ -10,7 +10,7 @@ public class Automovel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
     private String marca;
     private String modelo;
     private String placa;

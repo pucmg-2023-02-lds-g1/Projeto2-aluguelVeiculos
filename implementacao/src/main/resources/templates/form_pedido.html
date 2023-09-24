@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulário de Pedido</title>
+</head>
+<body>
+    <h1>Formulário de Pedido</h1>
+    <form th:object="${pedido}" th:action="@{/pedidos/novo}" method="post">
+        <input type="hidden" th:field="*{id}">
+        
+        <label>Descrição:</label>
+        <input type="text" th:field="*{descricao}">
+        
+        <label>Cliente:</label>
+        <select th:field="*{cliente}">
+            <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nome}"></option>
+        </select>
+        
+        <label>Automóvel:</label>
+        <select th:field="*{automovel}">
+            <option th:each="automovel : ${automoveis}" th:value="${automovel.id}" th:text="${automovel.nome}"></option>
+        </select>
+        
+        <!-- Adicione outros campos aqui -->
+        <button type="submit">Salvar</button>
+    </form>
+    <a th:href="@{/pedidos}">Voltar para a lista de pedidos</a>
+</body>
+</html>

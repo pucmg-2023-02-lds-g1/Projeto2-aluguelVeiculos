@@ -1,5 +1,6 @@
 package business.implementacao.Controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,36 +23,47 @@ import org.springframework.ui.Model;
 @Controller
 @RequestMapping("/pedidos")
 public class PedidoController {
-
     @Autowired
     private PedidoRepository pedidoRepository;
 
+    
     @GetMapping
     public String listarPedidos(Model model) {
-        Iterable<Pedido> pedidos = pedidoRepository.findAll();
+        List<Pedido> pedidos = pedidoRepository.findAll();
         model.addAttribute("pedidos", pedidos);
-        return "lista-pedidos";
+        return "lista_pedidos";
     }
-
+    
     @GetMapping("/novo")
-    public String mostrarFormularioNovoPedido(Model model) {
+    public String novoPedidoForm(Model model) {
         model.addAttribute("pedido", new Pedido());
-        return "formulario-pedido";
+        return "form_pedido";
     }
-
-    @PostMapping("/salvar")
-    public String salvarPedido(@ModelAttribute("pedido") Pedido pedido) {
+    
+    @PostMapping("/novo")
+    public String criarPedido(@ModelAttribute("pedido") Pedido pedido) {
         pedidoRepository.save(pedido);
         return "redirect:/pedidos";
     }
-
+    
     @GetMapping("/editar/{id}")
-    public String mostrarFormularioEditarPedido(@PathVariable Long id, Model model) {
-        Pedido pedido = pedidoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID de Pedido inválido"));
+    public String editarPedidoForm(@PathVariable Long id, Model model) {
+        Pedido pedido = pedidoRepository.findById(id).orElse(null);
         model.addAttribute("pedido", pedido);
-        return "formulario-pedido";
+        return "form_pedido";
     }
-
+    
+    @PostMapping("/editar/{id}")
+    public String atualizarPedido(@PathVariable Long id, @ModelAttribute("pedido") Pedido pedido) {
+        Pedido pedidoExistente = pedidoRepository.findById(id).orElse(null);
+        if (pedidoExistente != null) {
+            pedidoExistente.setDescricao(pedido.getDescricao());
+            // Atualizar outros campos conforme necessário
+            pedidoRepository.save(pedidoExistente);
+        }
+        return "redirect:/pedidos";
+    }
+    
     @GetMapping("/excluir/{id}")
     public String excluirPedido(@PathVariable Long id) {
         pedidoRepository.deleteById(id);

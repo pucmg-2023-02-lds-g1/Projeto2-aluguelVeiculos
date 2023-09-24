@@ -1,7 +1,6 @@
 package business.implementacao.models;
 
-import org.apache.logging.log4j.util.PerformanceSensitive;
-
+import business.implementacao.models.Automovel.Automovel;
 import business.implementacao.models.Usuario.Cliente;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,6 +23,12 @@ public class Pedido {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "automovel_id")
+    private Automovel automovel;
+
+    private String descricao;
 
     public Pedido(){
 
@@ -56,6 +61,24 @@ public class Pedido {
         this.cliente = cliente;
     }
     
+
+    public String getDescricao() {
+        return this.descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+    
+
+
+    public Automovel getAutomovel() {
+        return this.automovel;
+    }
+
+    public void setAutomovel(Automovel automovel) {
+        this.automovel = automovel;
+    }
 
 
 
